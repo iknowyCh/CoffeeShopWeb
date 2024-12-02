@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=3.0">
+    <meta charset="UTF-8">
+    <title>CL Coffee</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/firstpage.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarMenu" data-bs-offset="200">
+    <header class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container-xl d-flex justify-content-between align-items-center">
+            <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+                <img th:src="@{/photo/Logo.png}" width="80" height="80" alt="">
+                <h1 class="logo-title ms-2">CL Coffee</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0 ps-5 ps-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/#sec1}">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/#sec2}">關於我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/#sec3}">MENU</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/#sec4}">聯絡我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="order-now-link" th:href="@{/users}">登入</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<!-- =======================以上是導覽列區域======================================= -->
+
+    <section id="sec1">
+        <!-- 整個輪播的框架設定ID名稱，例如：carouselTop -->
+        <div id="carouselTop" class="carousel slide" data-bs-ride="carousel">
+            <!-- 這裡是顯示輪播圖片的地方，一個carousel-item區塊框放一張圖片 -->
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <!-- d-block代表display:block，w-100代表width:100% -->
+                    <picture>
+                        <source media="(min-width: 1000px)" th:srcset="@{/photo/Banner1.png}">
+                        <source media="(min-width: 500px)" th:srcset="@{/photo/Banner1.png}">
+                        <img decoding="async" th:src="@{/photo/Banner1.png}" class="d-block w-100">
+                    </picture>
+                </div>
+                <div class="carousel-item active">
+                    <picture>
+                        <source media="(min-width: 1000px)" th:srcset="@{/photo/Banner2.png}">
+                        <source media="(min-width: 500px)" th:srcset="@{/photo/Banner2.png}">
+                        <img decoding="async" th:src="@{/photo/Banner2.png}" class="d-block w-100">
+                    </picture>
+                </div>
+                <div class="carousel-item">
+                    <picture>
+                        <source media="(min-width: 1000px)" th:srcset="@{/photo/Banner3.png}">
+                        <source media="(min-width: 500px)" th:srcset="@{/photo/Banner3.png}">
+                        <img decoding="async" th:src="@{/photo/Banner3.png}" class="d-block w-100">
+                    </picture>
+                </div>
+            </div>
+    
+            <!-- 這是左側「上一張」按鈕，data-bs-target必須對應到ID名稱 -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselTop" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+    
+            <!-- 這是右側「下一張」按鈕，data-bs-target必須對應到ID名稱 -->
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselTop" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+    
+            <!-- 這是下方輪播圖片的指引器，有3張圖片就有3個button，data-bs-target必須對應到ID名稱 -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselTop" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselTop" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselTop" data-bs-slide-to="2" class="" aria-label="Slide 3"></button>
+            </div>
+        </div>
+    </section>
+    
+<!-- =======================以上是照片滑動區域======================================= -->
+
+    <section id="sec2">
+        <div class="container">
+            <h2 class="text-center">關於我們</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <img th:src="@{/photo/Outdoor.png}" class="img-fluid" alt="關於我們圖片">
+                </div>
+                <div class="col-md-6">
+                    <h5>我們的咖啡廳創立於2023年，致力於提供一個讓每位顧客都能享受放鬆氛圍的場所。
+                        無論是與朋友聚會、讀書、工作，還是獨自放鬆，我們都希望能成為您生活中溫馨的一角。
+                        邀請您來品嚐我們精心調製的咖啡和美味甜點，享受愉快時光。
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我們&MENU中間的分隔線 -->
+    <hr class="hr-custom1">
+
+<!-- =======================以上是關於我們區域======================================= -->
+
+<section id="sec3">
+    <h2 class="wow animate__ animate__fadeInUp delay-5 animated title" style="visibility: visible; animation-name: fadeInUp;">MENU</h2>
+
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="p1-tab" data-bs-toggle="tab" data-bs-target="#p1" type="button" role="tab" aria-controls="p1" aria-selected="false">軟餅乾系列</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="p2-tab" data-bs-toggle="tab" data-bs-target="#p2" type="button" role="tab" aria-controls="p2" aria-selected="false">手做布丁系列</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="p3-tab" data-bs-toggle="tab" data-bs-target="#p3" type="button" role="tab" aria-controls="p3" aria-selected="false">精緻蛋糕系列</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="p4-tab" data-bs-toggle="tab" data-bs-target="#p4" type="button" role="tab" aria-controls="p4" aria-selected="false">冰淇淋聖代系列</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="p5-tab" data-bs-toggle="tab" data-bs-target="#p5" type="button" role="tab" aria-controls="p5" aria-selected="false">奶昔系列</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="p6-tab" data-bs-toggle="tab" data-bs-target="#p6" type="button" role="tab" aria-controls="p6" aria-selected="false">花果茶系列</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="p7-tab" data-bs-toggle="tab" data-bs-target="#p7" type="button" role="tab" aria-controls="p7" aria-selected="false">手沖咖啡系列</button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+    <!-- 軟餅乾系列 -->
+    <div class="tab-pane fade show active" id="p1" role="tabpanel" aria-labelledby="p1-tab">
+        <div class="container">
+            <div class="row" data-class="軟餅乾系列">
+                <!-- 軟餅乾商品 -->
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieSugar.png}" data-title="糖霜軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieSugar.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>糖霜軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieLemon.png}" data-title="檸檬軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieLemon.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>檸檬軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieGinger.png}" data-title="薑糖軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieGinger.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>薑糖軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieCaramel.png}" data-title="焦糖核桃軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieCaramel.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>焦糖核桃軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieNut.png}" data-title="奶油核桃軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieNut.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>奶油核桃軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieBanna.png}" data-title="香蕉核桃軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieBanna.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香蕉核桃軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieBlue.png}" data-title="藍莓燕麥軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieBlue.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>藍莓燕麥軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieRaisin.png}" data-title="燕麥葡萄軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieRaisin.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>燕麥葡萄軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieMatcha.png}" data-title="抹茶杏仁軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieMatcha.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>抹茶杏仁軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieHoney.png}" data-title="薰衣草蜂蜜軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieHoney.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>薰衣草蜂蜜軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookiePeanut.png}" data-title="花生醬巧克力軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookiePeanut.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>花生醬巧克力軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cookie/CookieWhite.png}" data-title="白巧克力蔓越莓軟餅乾">
+                        <img th:src="@{/photo/Cookie/CookieWhite.png}" data-img="cookie1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>白巧克力蔓越莓軟餅乾</span>
+                    <div class="desc d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 手做布丁系列 -->
+    <div class="tab-pane fade" id="p2" role="tabpanel" aria-labelledby="p2-tab">
+        <div class="container">
+            <div class="row" data-class="手做布丁系列">
+                <!-- 手做布丁商品 -->
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingCaramel.png}" data-title="焦糖布丁">
+                        <img th:src="@{/photo/Pudding/PuddingCaramel.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>焦糖布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingVi.png}" data-title="香草布丁">
+                        <img th:src="@{/photo/Pudding/PuddingVi.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香草布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingCoco.png}" data-title="椰奶布丁">
+                        <img th:src="@{/photo/Pudding/PuddingCoco.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>椰奶布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingMatcha.png}" data-title="抹茶布丁">
+                        <img th:src="@{/photo/Pudding/PuddingMatcha.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>抹茶布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingBanna.png}" data-title="香蕉布丁">
+                        <img th:src="@{/photo/Pudding/PuddingBanna.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香蕉布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingStrow.png}" data-title="草莓布丁">
+                        <img th:src="@{/photo/Pudding/PuddingStrow.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>草莓布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingBlue.png}" data-title="藍莓布丁">
+                        <img th:src="@{/photo/Pudding/PuddingBlue.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>藍莓布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingMongo.png}" data-title="芒果布丁">
+                        <img th:src="@{/photo/Pudding/PuddingMongo.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>芒果布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingLemon.png}" data-title="檸檬布丁">
+                        <img th:src="@{/photo/Pudding/PuddingLemon.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>檸檬布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingChoco.png}" data-title="巧克力布丁">
+                        <img th:src="@{/photo/Pudding/PuddingChoco.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>巧克力布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingHoney.png}" data-title="蜂蜜牛奶布丁">
+                        <img th:src="@{/photo/Pudding/PuddingHoney.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>蜂蜜牛奶布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Pudding/PuddingApple.png}" data-title="蘋果肉桂布丁">
+                        <img th:src="@{/photo/Pudding/PuddingApple.png}" data-img="sec3p1_1b.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>蘋果肉桂布丁</span>
+                    <div class="desc d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 精緻蛋糕系列 -->
+    <div class="tab-pane fade" id="p3" role="tabpanel" aria-labelledby="p3-tab">
+        <div class="container">
+            <div class="row" data-class="精緻蛋糕系列">
+                <!-- 精緻蛋糕商品 -->
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeTi.png}" data-title="提拉米蘇">
+                        <img th:src="@{/photo/Cake/CakeTi.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>提拉米蘇</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeRed.png}" data-title="紅絲絨蛋糕">
+                        <img th:src="@{/photo/Cake/CakeRed.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>紅絲絨蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeStraw.png}" data-title="草莓奶油蛋糕">
+                        <img th:src="@{/photo/Cake/CakeStraw.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>草莓奶油蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeCoco.png}" data-title="椰子奶油蛋糕">
+                        <img th:src="@{/photo/Cake/CakeCoco.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>椰子奶油蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeLemon.png}" data-title="檸檬乳酪蛋糕">
+                        <img th:src="@{/photo/Cake/CakeLemon.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>檸檬乳酪蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeMango.png}" data-title="芒果奶酪蛋糕">
+                        <img th:src="@{/photo/Cake/CakeMango.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>芒果奶酪蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeBlue.png}" data-title="藍莓乳酪蛋糕">
+                        <img th:src="@{/photo/Cake/CakeBlue.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>藍莓乳酪蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeVi.png}" data-title="香草焦糖蛋糕">
+                        <img th:src="@{/photo/Cake/CakeVi.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香草焦糖蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeMatcha.png}" data-title="抹茶千層蛋糕">
+                        <img th:src="@{/photo/Cake/CakeMatcha.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>抹茶千層蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeCarrot.png}" data-title="核桃胡蘿蔔蛋糕">
+                        <img th:src="@{/photo/Cake/CakeCarrot.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>核桃胡蘿蔔蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeYogurt.png}" data-title="百香果優格蛋糕">
+                        <img th:src="@{/photo/Cake/CakeYogurt.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>百香果優格蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Cake/CakeChoco.png}" data-title="巧克力慕斯蛋糕">
+                        <img th:src="@{/photo/Cake/CakeChoco.png}" data-img="cake1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>巧克力慕斯蛋糕</span>
+                    <div class="desc d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 冰淇淋聖代系列 -->
+    <div class="tab-pane fade" id="p4" role="tabpanel" aria-labelledby="p4-tab">
+        <div class="container">
+            <div class="row" data-class="冰淇淋聖代系列">
+                <!-- 冰淇淋聖代商品 -->
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceVi.png}" data-title="香草核桃聖代">
+                        <img th:src="@{/photo/Ice/IceVi.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香草核桃聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IcePeach.png}" data-title="香草蜜桃聖代">
+                        <img th:src="@{/photo/Ice/IcePeach.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香草蜜桃聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceMatcha.png}" data-title="抹茶紅豆聖代">
+                        <img th:src="@{/photo/Ice/IceMatcha.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>抹茶紅豆聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceMongo.png}" data-title="芒果椰香聖代">
+                        <img th:src="@{/photo/Ice/IceMongo.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>芒果椰香聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceBlack.png}" data-title="黑莓奶油聖代">
+                        <img th:src="@{/photo/Ice/IceBlack.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>黑莓奶油聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceMoca.png}" data-title="薄荷摩卡聖代">
+                        <img th:src="@{/photo/Ice/IceMoca.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>薄荷摩卡聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceYogurt.png}" data-title="百香果優格聖代">
+                        <img th:src="@{/photo/Ice/IceYogurt.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>百香果優格聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceBlue.png}" data-title="藍莓奶酪聖代">
+                        <img th:src="@{/photo/Ice/IceBlue.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>藍莓奶酪聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceAllNut.png}" data-title="綜合堅果聖代">
+                        <img th:src="@{/photo/Ice/IceAllNut.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>綜合堅果聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceCocoRed.png}" data-title="椰奶紅豆聖代">
+                        <img th:src="@{/photo/Ice/IceCocoRed.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>椰奶紅豆聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceVi.png}" data-title="焦糖核桃聖代">
+                        <img th:src="@{/photo/Ice/IceVi.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>焦糖核桃聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Ice/IceCoco.png}" data-title="芒果椰香聖代">
+                        <img th:src="@{/photo/Ice/IceCoco.png}" data-img="sundae1.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>芒果椰香聖代</span>
+                    <div class="desc d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 奶昔系列 -->
+    <div class="tab-pane fade" id="p5" role="tabpanel" aria-labelledby="p5-tab">
+        <div class="container">
+            <div class="row" data-class="奶昔系列">
+                <!-- 奶昔商品 -->
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Shake/ShakeVi.png}" data-title="香草奶昔">
+                        <img th:src="@{/photo/Shake/ShakeVi.png}" data-img="vanilla_shake.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香草奶昔</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Shake/ShakeStrow.png}" data-title="草莓奶昔">
+                        <img th:src="@{/photo/Shake/ShakeStrow.png}" data-img="strawberry_shake.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>草莓奶昔</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Shake/ShakeMongo.png}" data-title="芒果奶昔">
+                        <img th:src="@{/photo/Shake/ShakeMongo.png}" data-img="mango_shake.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>芒果奶昔</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Shake/ShakeCaraml.png}" data-title="焦糖奶昔">
+                        <img th:src="@{/photo/Shake/ShakeCaraml.png}" data-img="caramel_shake.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>焦糖奶昔</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Shake/ShakeCoffee.png}" data-title="咖啡奶昔">
+                        <img th:src="@{/photo/Shake/ShakeCoffee.png}" data-img="coffee_shake.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>咖啡奶昔</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Shake/ShakeChoco.png}" data-title="巧克力奶昔">
+                        <img th:src="@{/photo/Shake/ShakeChoco.png}" data-img="chocolate_shake.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>巧克力奶昔</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Shake/ShakeBlue.png}" data-title="藍莓優格奶昔">
+                        <img th:src="@{/photo/Shake/ShakeBlue.png}" data-img="blueberry_yogurt_shake.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>藍莓優格奶昔</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Shake/ShakeMatcha.png}" data-title="抹茶紅豆奶昔">
+                        <img th:src="@{/photo/Shake/ShakeMatcha.png}" data-img="matcha_red_bean_shake.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>抹茶紅豆奶昔</span>
+                    <div class="desc d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 花果茶系列 -->
+    <div class="tab-pane fade" id="p6" role="tabpanel" aria-labelledby="p6-tab">
+        <div class="container">
+            <div class="row" data-class="花果茶系列">
+                <!-- 花果茶商品 -->
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Tea/TeaGreen.png}" data-title="西柚綠茶">
+                        <img th:src="@{/photo/Tea/TeaGreen.png}" data-img="grapefruit_tea.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>西柚綠茶</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Tea/TeaAll.png}" data-title="熱帶水果茶">
+                        <img th:src="@{/photo/Tea/TeaAll.png}" data-img="tropical_fruit_tea.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>熱帶水果茶</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Tea/TeaPieApple.png}" data-title="鳳梨烏龍茶">
+                        <img th:src="@{/photo/Tea/TeaPieApple.png}" data-img="pineapple_oolong_tea.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>鳳梨烏龍茶</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Tea/TeaLitchi.png}" data-title="荔枝玫瑰茶">
+                        <img th:src="@{/photo/Tea/TeaLitchi.png}" data-img="lychee_rose_tea.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>荔枝玫瑰茶</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Tea/TeaJasmine.png}" data-title="茉莉桂花茶">
+                        <img th:src="@{/photo/Tea/TeaJasmine.png}" data-img="lychee_rose_tea.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>茉莉桂花茶</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Tea/TeaLuo.png}" data-title="洛神花果茶">
+                        <img th:src="@{/photo/Tea/TeaLuo.png}" data-img="passionfruit_honey_tea.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>洛神花果茶</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Tea/TeaApple.png}" data-title="茉莉蘋果茶">
+                        <img th:src="@{/photo/Tea/TeaApple.png}" data-img="passionfruit_honey_tea.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>茉莉蘋果茶</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Tea/TeaRose.png}" data-title="玫瑰薰衣草茶">
+                        <img th:src="@{/photo/Tea/TeaRose.png}" data-img="passionfruit_honey_tea.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>玫瑰薰衣草茶</span>
+                    <div class="desc d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 手沖咖啡系列 -->
+    <div class="tab-pane fade" id="p7" role="tabpanel" aria-labelledby="p7-tab">
+        <div class="container">
+            <div class="row" data-class="手沖咖啡系列">
+                <!-- 手沖咖啡商品 -->
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Coffee/CoffeeV.png}" data-title="香草拿鐵">
+                        <img th:src="@{/photo/Coffee/CoffeeV.png}" data-img="americano.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香草拿鐵</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Coffee/CoffeeStraw.png}" data-title="草莓拿鐵">
+                        <img th:src="@{/photo/Coffee/CoffeeStraw.png}" data-img="latte.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>草莓拿鐵</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Coffee/CoffeeMatcha.png}" data-title="抹茶拿鐵">
+                        <img th:src="@{/photo/Coffee/CoffeeMatcha.png}" data-img="vanilla_latte.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>抹茶拿鐵</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Coffee/CoffeeMaple.png}" data-title="楓糖拿鐵">
+                        <img th:src="@{/photo/Coffee/CoffeeMaple.png}" data-img="vanilla_latte.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>楓糖拿鐵</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Coffee/CoffeeOrg.png}" data-title="香橙拿鐵">
+                        <img th:src="@{/photo/Coffee/CoffeeOrg.png}" data-img="rose_latte.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>香橙拿鐵</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Coffee/CoffeeRose.png}" data-title="玫瑰拿鐵">
+                        <img th:src="@{/photo/Coffee/CoffeeRose.png}" data-img="rose_latte.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>玫瑰拿鐵</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Coffee/CoffeeMoca.png}" data-title="曼巴摩卡咖啡">
+                        <img th:src="@{/photo/Coffee/CoffeeMoca.png}" data-img="caramel_salt_ice_coffee.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>曼巴摩卡咖啡</span>
+                    <div class="desc d-none"></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 wow animate__ animate__fadeInUp delay-5 animated">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="@{/photo/Coffee/CoffeeSolt.png}" data-title="焦糖海鹽拿鐵">
+                        <img th:src="@{/photo/Coffee/CoffeeSolt.png}" data-img="caramel_salt_ice_coffee.jpg" alt="" class="hover-effect">
+                    </a>
+                    <span>焦糖海鹽拿鐵</span>
+                    <div class="desc d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- 模態框 -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MENU&聯絡我們中間的分隔線 -->
+<hr class="line">
+
+<!-- =======================以上是MENU區域======================================= -->
+
+<section id="sec4">
+    <div class="container">
+        <h2 class="text-center1">聯絡我們</h2>
+        <h3 class="text-center2">Content</h3>
+        <div class="row d-flex align-items-center">
+            <div class="col-md-6 order-md-2">
+                <h4>CL Coffee</h4>
+                <h6>地址 | 237 Broadway, Manhattan, New York, NY, USA</h6>
+                <h6>電話 | (02) 5555-0198</h6>
+                    <!-- 圖示連結 -->
+                    <div class="icon-links">
+					 <a th:href="@{|https://www.facebook.com|}" target="_blank">
+					    <img th:src="@{/photo/icon/FB2.png}" alt="Facebook" class="social-icon">
+					</a>
+					<a th:href="@{|https://www.instagram.com|}" target="_blank">
+					    <img th:src="@{/photo/icon/IG4.png}" alt="Instagram" class="social-icon">
+					</a>
+					<a th:href="@{|https://line.me/tw/|}" target="_blank">
+					    <img th:src="@{/photo/icon/LINE.png}" alt="Line" class="social-icon">
+					</a>
+
+                </div>
+            </div>
+            <div class="col-md-6 order-md-1">
+                <iframe th:src="'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.858201565853!2d-74.00759118459446!3d40.7136032793319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a2046bc3e19%3A0xadaaf2e6c07e2e5e!2s237%20Broadway%2C%20New%20York%2C%20NY%2010007%2C%20USA!5e0!3m2!1sen!2stw!4v1650455310283!5m2!1sen!2stw'" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer 區域 -->
+    <footer>
+        Copyright © 2024 CL Coffee Web | Maintain by CH
+    </footer>
+</section>
+
+<!-- =======================以上是聯絡我們+Footer區域======================================= -->
+
+    <!-- 引入 JavaScript 檔案 -->
+<script th:src="@{https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js}"></script>
+<script>
+    $(document).ready(function(){
+        $('#imageModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // 觸發模態框的按鈕
+            var imgSrc = button.find('img').attr('src'); // 取得圖片的src屬性
+            var modal = $(this);
+            modal.find('.modal-body img').attr('src', imgSrc); // 設置模態框中圖片的src屬性
+        });
+    });
+</script>
+
+
+</body>
+</html>

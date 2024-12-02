@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/shopcart.css}"> <!-- 使用 Thymeleaf 的 URL 表達式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> <!-- 引入 SweetAlert CSS -->
+</head>
+<body>
+    <div class="container">
+        <h2>購物車</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>商品名稱</th>
+                    <th>單價</th>
+                    <th>數量</th>
+                    <th>小計</th> <!-- 新增小計欄位 -->
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items" th:each="item : ${cart}">
+                <tr>
+                    <td th:text="${item.name}">商品名稱</td> <!-- 顯示商品名稱 -->
+                    <td th:text="${#numbers.formatInteger(item.price, 0)}">價格</td> <!-- 顯示商品價格，去掉小數點 -->
+                    <td>
+                        <!-- 編輯數量功能 -->
+                        <form th:action="@{/orders/update/{id}(id=${item.id})}" method="post"> <!-- 正確設置 id 值 -->
+                            <input type="number" name="quantity" th:value="${#numbers.formatInteger(item.quantity, 0)}" min="1"> <!-- 顯示並編輯商品數量，去掉小數點 -->
+                            <button type="submit" class="btn btn-primary">更新數量</button> <!-- 提交更新數量 -->
+                        </form>
+                    </td>
+                    <td th:text="${#numbers.formatInteger(item.totalAmount, 0)}">小計</td> <!-- 顯示小計，去掉小數點 -->
+                    <td>
+                        <!-- 刪除商品功能 -->
+                        <form th:action="@{/orders/delete/{id}(id=${item.id})}" method="post"> <!-- 正確設置 id 值 -->
+                            <button type="submit" class="btn btn-danger">刪除</button> <!-- 提交刪除商品 -->
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-end">
+            <h4>總計：<span th:text="${#numbers.formatInteger(totalAmount, 0)}"></span> 元</h4> <!-- 顯示總計，去掉小數點 -->
+        </div>
+        <form id="checkoutForm" action="/orders/checkout" method="post"> <!-- 設置表單 id -->
+           <button class="btn btn-primary-custom" type="button" onclick="confirmSubmitOrder()">送出訂單</button> <!-- 修改 class 為 btn-primary-custom -->
+        </form>
+        <a th:href="@{/users/sec}" class="btn btn-secondary">繼續選購</a> <!-- 繼續選購按鈕 -->
+    </div>
+
+    <script th:src="@{https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js}"></script> <!-- 載入 jQuery -->
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js}"></script> <!-- 載入 Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- 引入 SweetAlert JS -->
+    <script>
+        function confirmSubmitOrder() {
+            // 使用 SweetAlert 提示
+            Swal.fire({
+                title: '確定要送出訂單嗎？',
+                text: "送出後將無法修改訂單內容！",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '確定',
+                cancelButtonText: '取消'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('checkoutForm').submit(); // 使用 JavaScript 提交表單
+                }
+            });
+        }
+    </script>
+</body>
+</html>

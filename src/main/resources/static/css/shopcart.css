@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Righteous&display=swap');
+
+/* 根變數設置，用於定義全局顏色和字體 */
+:root {
+    --c-nav-10: rgb(104, 26, 126, 1.0); /* 導航欄主色 */
+    --c-nav-05: rgba(208, 55, 250, 0.5); /* 導航欄輔助色 */
+    --c-nav-00: rgba(208, 55, 250, 0.2); /* 導航欄背景色 */
+
+    --c-assist1-10: rgb(129, 16, 160); /* 輔助顏色1 */
+    --c-assist1-05: rgba(129, 16, 160, 0.5); /* 輔助顏色1 半透明 */
+
+    --c-assist2-10: rgba(173, 99, 196, 0.8); /* 輔助顏色2 */
+    --c-assist2-03: rgba(147, 99, 161, 0.5); /* 輔助顏色2 半透明 */
+    --c-assist2-01: rgba(206, 124, 231, 0.1); /* 輔助顏色2 淡色 */
+    --c-assist2-00: rgba(177, 95, 202, 0.05); /* 輔助顏色2 更淡色 */
+
+    --c-assist3-10: hwb(295 4% 56%); /* 輔助顏色3 */
+
+    --c-point: rgb(247, 49, 108); /* 強調顏色 */
+    --f-family-1: "Righteous", "Noto Sans TC", sans-serif; /* 字體家族 */
+}
+
+/* 全局字體大小 */
+html {
+    font-size: 22px;
+}
+
+/* 全局樣式設置 */
+body {
+    background-color: rgba(245, 160, 168, 0.822); /* 背景顏色 */
+    font-family: var(--f-family-1); /* 字體家族 */
+    margin: 0; /* 取消默認外邊距 */
+    padding: 0; /* 取消默認內邊距 */
+    color: #000000; /* 文字顏色 */
+}
+
+/* 購物車標題樣式 */
+.container h2 {
+    color: rgb(150, 90, 56); /* 標題顏色 */
+    text-align: center; /* 標題居中 */
+    margin-bottom: 20px; /* 標題底部外邊距 */
+}
+
+/* 表格樣式 */
+.table {
+    margin-top: 20px; /* 上邊距 */
+    background-color: #fff; /* 背景顏色 */
+    border-radius: 5px; /* 圓角 */
+    overflow: hidden; /* 隱藏溢出內容 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+}
+
+/* 表格標題樣式 */
+.table th {
+    background-color: rgb(150, 90, 56); /* 標題背景色 */
+    color: #fff; /* 文字顏色 */
+    text-align: center; /* 文字居中 */
+    padding: 10px; /* 內邊距 */
+}
+
+/* 表格內容樣式 */
+.table td {
+    text-align: center; /* 文字居中 */
+    padding: 10px; /* 內邊距 */
+}
+
+/* 刪除按鈕樣式 */
+.btn-danger {
+    background-color: var(--c-assist1-10); /* 按鈕背景色 */
+    border: none; /* 無邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 10px 20px; /* 內邊距 */
+    font-size: 1rem; /* 字體大小 */
+    color: #fff; /* 文字顏色 */
+    transition: background-color 0.3s ease; /* 背景色過渡效果 */
+}
+
+/* 刪除按鈕懸停效果 */
+.btn-danger:hover {
+    background-color: var(--c-assist1-05); /* 懸停時背景色 */
+    color: #fff; /* 懸停時文字顏色 */
+}
+
+/* 送出訂單按鈕樣式 */
+button[type="submit"] {
+    background-color: rgb(150, 90, 56); /* 按鈕背景色 */
+    border: none; /* 無邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 10px 20px; /* 內邊距 */
+    font-size: 1rem; /* 字體大小 */
+    color: #fff; /* 文字顏色 */
+    transition: background-color 0.3s ease; /* 背景色過渡效果 */
+}
+
+/* 送出訂單按鈕懸停效果 */
+button[type="submit"]:hover {
+    background-color: white; /* 懸停時背景色 */
+    color: rgb(150, 90, 56); /* 懸停時文字顏色 */
+    border: 2px solid rgb(150, 90, 56); /* 懸停時外框顏色 */
+}
+
+/* 自定義送出訂單按鈕樣式 */
+.btn-primary-custom {
+    background-color: rgb(150, 90, 56); /* 設定背景顏色 */
+    border: none; /* 設定邊框顏色 */
+    color: white; /* 設定文字顏色 */
+    padding: 10px 20px; /* 設定內邊距 */
+    border-radius: 5px; /* 設定圓角 */
+    transition: background-color 0.3s, border-color 0.3s; /* 設定過渡效果 */
+}
+
+.btn-primary-custom:hover {
+    background-color: white; /* 懸停時背景色 */
+    color: rgb(150, 90, 56); /* 懸停時文字顏色 */
+    border: 2px solid rgb(150, 90, 56); /* 懸停時外框顏色 */
+}
+
+
+/* 繼續選購按鈕樣式 */
+a.btn-secondary {
+    background-color: rgb(150, 90, 56); /* 按鈕背景色 */
+    border: none; /* 無邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 10px 20px; /* 內邊距 */
+    font-size: 1rem; /* 字體大小 */
+    color: #fff; /* 文字顏色 */
+    transition: background-color 0.3s ease; /* 背景色過渡效果 */
+}
+
+/* 繼續選購按鈕懸停效果 */
+a.btn-secondary:hover {
+    background-color: white; /* 懸停時背景色 */
+    color: rgb(150, 90, 56); /* 懸停時文字顏色 */
+    border: 2px solid rgb(150, 90, 56);
+}
+
+/* 總計文字樣式 */
+.text-end h4 {
+    color: rgb(150, 90, 56); /* 總計文字顏色 */
+    font-weight: bold; /* 加粗 */
+}
+
+/* 表單樣式 */
+form {
+    display: inline; /* 行內顯示 */
+}
+
+/* 數量輸入框樣式 */
+input[type="number"] {
+    width: 60px; /* 寬度 */
+    padding: 5px; /* 內邊距 */
+    border: 1px solid var(--c-assist2-10); /* 邊框 */
+    border-radius: 5px; /* 圓角 */
+    text-align: center; /* 文字居中 */
+}

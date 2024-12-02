@@ -1,0 +1,476 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Righteous&display=swap');
+
+/* 根變數設置，用於定義全局顏色和字體 */
+:root {
+  --c-nav-10: rgb(104, 26, 126, 1.0); /* 導航欄主色 */
+  --c-nav-05: rgba(208, 55, 250, 0.5); /* 導航欄輔助色 */
+  --c-nav-00: rgba(208, 55, 250, 0.2); /* 導航欄背景色 */
+
+  --c-assist1-10: rgb(129, 16, 160); /* 輔助顏色1 */
+  --c-assist1-10: rgba(129, 16, 160, 0.5); /* 輔助顏色1 半透明 */
+
+  --c-assist2-10: rgb(173, 99, 196, 0.8); /* 輔助顏色2 */
+  --c-assist2-03: rgb(147, 99, 161, 0.5); /* 輔助顏色2 半透明 */
+  --c-assist2-01: rgba(206, 124, 231, 0.1); /* 輔助顏色2 淡色 */
+  --c-assist2-00: rgba(177, 95, 202, 0.05); /* 輔助顏色2 更淡色 */
+
+  --c-assist3-10: hwb(295 4% 56%); /* 輔助顏色3 */
+
+  --c-point: rgb(247, 49, 108); /* 強調顏色 */
+  --f-family-1: "Righteous", "Noto Sans TC", sans-serif; /* 字體家族 */
+}
+
+/* 全局字體大小 */
+html {
+  font-size: 22px;
+}
+
+/* 全局樣式設置 */
+body {
+  background-color: rgba(245, 160, 168, 0.822); /* 背景顏色 */
+}
+
+/* 字體樣式 */
+.righteous {
+  font-family: "Righteous", sans-serif;
+}
+
+.noto-sans {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.right-noto {
+  font-family: "Righteous", "Noto Sans TC", sans-serif;
+}
+
+/*=======================以上是調整整個網頁的固定數據=======================================*/
+
+/* 共用內容 */
+
+/* 導航欄背景顏色 */
+.navbar {
+  background-color: rgb(150, 90, 56);
+}
+
+/* 導航欄品牌圖片樣式 */
+.navbar-brand img {
+  width: min(calc(40px + 3vw), 70px); /* 圖片寬度 */
+  height: auto; /* 高度自動調整 */
+}
+
+/* 導航欄品牌標題樣式 */
+.navbar-brand h1 {
+  font-size: min(calc(18px + 1vw), 40px); /* 字體大小 */
+  transform: translateY(9px); /* 垂直位置調整 */
+  font-family: var(--f-family-1); /* 字體 */
+}
+
+/* 導航欄連結樣式 */
+.navbar-nav .nav-link {
+  font-size: 1.1rem; /* 字體大小 */
+  font-weight: bold; /* 字體粗細 */
+  color: #0c0c0c; /* 字體顏色 */
+}
+
+/* 區域間距設定 */
+.section {
+  padding: 60px 0; /* 上下內邊距設置為60px */
+}
+
+/* 每個區域的內邊距和外邊距設定，避免內容混合 */
+#sec2 {
+  padding: 20px 0; /* 上下內邊距設置為100px */
+  margin-top: 100px; /* 上外邊距設置為100px */
+}
+
+/* 調整主要區域圖片 */
+
+/* 調整輪播圖片的樣式 */
+.carousel-item img {
+  width: 100%; /* 設置圖片寬度為100% */
+  height: auto; /* 保持高度自動，以保持比例 */
+  display: block; /* 設置為塊級元素 */
+  object-fit: cover; /* 確保圖片覆蓋整個容器 */
+}
+
+/* 調整輪播容器的樣式 */
+.carousel-inner {
+  position: relative; /* 設置相對定位 */
+  width: 100%; /* 設置寬度為100% */
+  overflow: hidden; /* 隱藏超出範圍的內容 */
+}
+
+/* 調整左側和右側按鈕的樣式 */
+.carousel-control-prev, .carousel-control-next {
+  width: 5%; /* 調整按鈕的寬度 */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* 設置背景顏色為半透明黑色 */
+  border-radius: 50%; /* 設置邊框圓角為50% */
+  padding: 10px; /* 設置內邊距 */
+}
+
+/* 調整指引器按鈕的樣式 */
+.carousel-indicators button {
+  background-color: rgba(0, 0, 0, 0.13); /* 設置背景顏色為半透明黑色 */
+  border: none; /* 移除邊框 */
+  width: 10px; /* 設置寬度 */
+  height: 10px; /* 設置高度 */
+  border-radius: 50%; /* 設置邊框圓角為50% */
+  margin: 0 5px; /* 設置左右邊距 */
+}
+
+.carousel-indicators .active {
+  background-color: rgba(0, 0, 0, 0.8); /* 設置激活狀態的背景顏色 */
+}
+
+/*=======================以上是滑動頁面的固定數據=======================================*/
+
+
+/* 關於我們區域的背景顏色和內邊距設定 */
+#sec2 {
+  background-color: rgba(245, 160, 168, 0.822); /* 背景顏色設置為淡灰色 */
+  padding-top: 110px; /* 額外的上邊距來避開固定導航欄 */
+  padding-bottom: 110px; /* 設置下方內邊距來避免圖片溢出到下方區域 */
+  margin-top: -30px; /* 調整區域的上外邊距，避免導覽列遮擋標題 */
+}
+
+/* 關於我們區域標題的底部邊距設定 */
+#sec2 h2 {
+  color: black; /* 字體顏色設置為黑色 */
+  margin-bottom: 40px; /* 標題底部邊距設置為30px */
+  font-size: 43px;
+  font-weight: bold;
+}
+
+/* 關於我們圖片的樣式 */
+#sec2 img {
+  width: 100%; /* 設置圖片寬度為100% */
+  height: auto; /* 高度自動調整 */
+  pointer-events: none; /* 禁用滑鼠事件 */
+  transform: none; /* 禁用任何變換效果 */
+  transition: none; /* 禁用過渡效果 */
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto; /* 圖片居中 */
+}
+
+/* 關於我們區域內文的樣式 */
+#sec2 h5 {
+  font-size: 30px; /* 字體大小設置為18px */
+  text-align: center; /* 置中對齊 */
+  color: black; /* 字體顏色設置為黑色 */
+  font-weight: bold;
+  line-height: 1.6; /* 行高設置為1.6 */
+  margin-top: 150px; /* 頂部邊距設置為20px */
+}
+
+/*=======================以上是調整關於我們的固定數據=======================================*/
+
+/* 分隔線樣式 */
+.hr-custom1 {
+  border: 5px solid #ce1616;
+  margin: 0px 0; /* 上下邊距 */
+}
+
+/*=======================以上是關於我們&MENU區域中間分隔線的固定數據=======================================*/
+
+/* MENU區域 */
+#sec3 {
+  padding-top: 85px; /* 額外的上邊距來避開固定導航欄 */
+  padding-bottom: 80px; /* 設置下方內邊距來避免圖片溢出到下方區域 */
+  background-color: #e9b554; /* 背景顏色設置為淡灰色 */
+}
+
+/* 調整標題的樣式和位置 */
+.title {
+  text-align: center; /* 置中對齊 */
+  color: #000000; /* 字體顏色 */
+  font-size: 2.5rem; /* 字體大小 */
+  font-weight: bold; /* 字體粗細 */
+  margin-top: 20px; /* 上邊距 */
+}
+
+.hr-custom{
+  border: 5px solid #ffffff;
+}
+
+/* 導覽列文字下方的線條樣式 */
+.nav-tabs .nav-link {
+  border: none; /* 取消原有的邊框 */
+  border: 2px #ffffff; /* 初始化為透明 */
+  padding-bottom: 5px; /* 添加下方內邊距，讓文字與邊框分開 */
+}
+
+/* 當按鈕被選中時的樣式 */
+.nav-tabs {
+  border-bottom-color: rgba(150, 90, 56);/* 設置選中時的邊框顏色 */
+}
+
+/* 調整導航列的文字顏色 */
+.nav-tabs .nav-link {
+  color: #000000; /* 未激活狀態的文字顏色 */
+  font-weight: bold; /* 字體粗細 */
+}
+
+.nav-tabs .nav-link:hover {
+  color: #ffffff; /* 懸停時字體的顏色 */
+  background-color: rgba(150, 90, 56, 0.795); /* 懸停時的背景顏色 */
+}
+
+.nav-tabs .nav-link.active {
+  color: #fff; /* 激活狀態的顏色 */
+  background-color: rgba(150, 90, 56, 0.795); /* 激活狀態的背景顏色 */
+  border: none; /* 移除邊框 */
+}
+
+/* 調整圖片展示區域的樣式 */
+.tab-content {
+  margin-top: 20px; /* 上邊距 */
+}
+
+.row .col-12 {
+  margin-bottom: 8px; /* 下邊距 */
+}
+
+.row img {
+  width: 100%; /* 寬度 100% */
+  height: auto; /* 高度自動 */
+  transition: transform 0.3s; /* 添加過渡效果 */
+  padding: 5px 0px; /* 內邊距 */
+}
+
+/* 圖片懸浮效果 */
+.row img:hover {
+  transform: scale(1.1); /* 懸浮時放大 */
+}
+
+/* 圖片描述文字的樣式 */
+.row span {
+  display: block; /* 設置為塊級元素 */
+  text-align: center; /* 置中對齊 */
+  margin-top: 8px; /* 上邊距 */
+  font-weight: bold; /* 字體加粗 */
+  color: #000000; /* 字體顏色 */
+  font-size: 23px; /* 字體大小 */
+}
+
+/*=======================以上是MENU區域的固定數據=======================================*/
+
+.line{
+  border: 5px solid #ce1616;
+  margin: 0px 0; /* 上下邊距 */
+}
+
+/*=======================以上是MENU區域的固定數據=======================================*/
+
+/* 調整 sec4 區域內的地圖部分樣式 */
+#sec4 .google-map {
+  width: 100%;
+  height: 450px; /* 設定地圖高度 */
+  border: 2px solid #ccc; /* 設定地圖邊框樣式 */
+  border-radius: 8px; /* 設定地圖邊框圓角 */
+}
+
+/* 可選的調整地圖和文字間距 */
+#sec4 .col-md-6 {
+  margin-bottom: 80px; /* 設定地圖和文字之間的間距 */
+  margin-top:30px;
+}
+
+
+/*聯絡我們 區域*/
+#sec4 h2 {
+  text-align: center; /* 置中對齊 */
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 135px;
+  color: #000000; /* 字體顏色 */
+}
+
+/*Content 區域*/
+#sec4 h3 {
+  font-family: 'Georgia', serif;
+  text-align: center; /* 置中對齊 */
+  font-size: 20px;
+  font-weight: normal;
+  color: #000000; /* 字體顏色 */
+}
+
+/*CL Coffee 區域*/
+#sec4 h4 {  
+  font-family: "Righteous", sans-serif;
+  margin-top: -70px; /* 上邊距 */
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #000000; /* 字體顏色 */
+}
+
+/*地址電話 區域*/
+#sec4 h6 {
+  font-family: 'Verdana', sans-serif;
+  font-size: 21px;
+  font-weight: bold;
+  font-weight: light;
+  color: #000000; /* 字體顏色 */
+}
+
+/* 如果需要調整行高、間距等，可以繼續添加屬性 */
+
+#sec4 h6 {
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.icon-links {
+  margin-top: 10px; /* 調整圖示與電話之間的距離 */
+  display: flex;
+  justify-content: flex-start; /* 調整圖示的對齊方式 */
+}
+
+.icon-links a {
+  margin-right: 30px; /* 調整圖示之間的間距 */
+}
+
+.social-icon {
+  width: 40px; /* 調整圖示的寬度 */
+  height: auto; /* 保持圖示的縱橫比 */
+}
+
+
+/* footer 區域 */
+footer {
+  background-color: rgba(150, 90, 56);
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  padding: 1rem;
+  position: relative;
+  z-index: 1000;
+}
+
+/*=======================以上是聯絡我們+Footer的固定數據=======================================*/
+
+
+
+/*=======================手機板樣式調整=======================================*/
+@media (max-width: 768px) {
+  /* LOGO 和標題容器 */
+  .container-xl .d-flex.align-items-center {
+    flex-direction: row; /* 水平方向排列 */
+    align-items: center; /* 垂直方向居中對齊 */
+  }
+
+  /* 調整標題字體大小 */
+  .logo-title {
+    font-size: 1.2rem; /* 字體大小調整 */
+  }
+
+  /* 調整輪播容器的樣式 */
+  .carousel-inner {
+    height: auto; /* 設置輪播容器高度自適應 */
+    margin-top: 60px; /* 設置輪播容器上邊距 */
+  }
+
+  /* 調整輪播圖片的樣式 */
+  .carousel-item img {
+    width: 100%; /* 寬度設置為100% */
+    height: auto; /* 高度自適應 */
+    object-fit: cover; /* 確保圖片覆蓋整個容器 */
+  }
+
+  /* 調整左側和右側按鈕的樣式 */
+  .carousel-control-prev, .carousel-control-next {
+    width: 10%; /* 調整按鈕的寬度 */
+  }
+
+  .carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* 設置背景顏色為半透明黑色 */
+    border-radius: 50%; /* 設置邊框圓角為50% */
+    padding: 5px; /* 設置內邊距 */
+  }
+
+  /* 調整指引器按鈕的樣式 */
+  .carousel-indicators button {
+    width: 7px; /* 設置寬度 */
+    height: 7px; /* 設置高度 */
+  }
+
+  .carousel-item {
+    padding-top: 47px; /* 增加輪播圖片的上邊距 */
+  }
+
+  /* 關於我們區域標題的底部邊距設定 */
+  #sec2 h2 {
+    font-size: 28px; /* 字體大小調整為28px */
+    margin-bottom: 20px; /* 標題底部邊距設置為20px */
+  }
+
+  /* 關於我們區域內文的樣式 */
+  #sec2 h5 {
+    font-size: 20px; /* 字體大小調整為20px */
+    margin-top: 18px; /* 頂部邊距設置為20px */
+    line-height: 1.5; /* 行高設置為1.5 */
+  }
+
+  /* 圖片樣式 */
+  #sec2 img {
+    margin-bottom: 20px; /* 圖片底部邊距設置為20px */
+  }
+
+  .title {
+    font-size: 2rem; /* 字體大小 */
+  }
+
+  .nav-tabs .nav-link {
+    font-size: 1rem; /* 字體大小 */
+    padding: 8px 15px; /* 內邊距 */
+  }
+
+  .nav-tabs {
+    border-bottom: 3px solid rgba(150, 90, 56, 0.795); /* 分隔線粗度調整 */
+  }
+
+  .tab-content {
+    margin-top: 20px; /* 上邊距 */
+  }
+
+  .row .col-12 {
+    margin-bottom: 15px; /* 下邊距 */
+  }
+
+  .row img {
+    padding: 8px 10px; /* 內邊距 */
+  }
+
+  .row span {
+    margin-top: 15px; /* 上邊距 */
+    font-size: 20px; /* 字體大小 */
+  }
+
+  #sec4 .col-md-6 {
+    margin-bottom: 20px; /* 縮小地圖和文字之間的間距 */
+    margin-top: 10px;
+  }
+
+  #sec4 h2 {
+    font-size: 32px; /* 調整字體大小 */
+    margin-top: 50px;
+  }
+
+  #sec4 h3 {
+    font-size: 18px; /* 調整字體大小 */
+  }
+
+  #sec4 h4 {
+    margin-top: 0px; /* 調整上邊距 */
+    font-size: 20px; /* 調整字體大小 */
+  }
+
+  #sec4 h6 {
+    font-size: 16px; /* 調整字體大小 */
+  }
+
+}

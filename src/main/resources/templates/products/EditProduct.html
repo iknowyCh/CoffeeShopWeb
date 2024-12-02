@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>編輯商品</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        :root {
+            --c-nav-10: rgb(104, 26, 126, 1.0);
+            --c-nav-05: rgba(208, 55, 250, 0.5);
+            --c-nav-00: rgba(208, 55, 250, 0.2);
+            --c-assist1-10: rgb(129, 16, 160);
+            --c-assist1-10: rgba(129, 16, 160, 0.5);
+            --c-assist2-10: rgb(173, 99, 196, 0.8);
+            --c-assist2-03: rgb(147, 99, 161, 0.5);
+            --c-assist2-01: rgba(206, 124, 231, 0.1);
+            --c-assist2-00: rgba(177, 95, 202, 0.05);
+            --c-assist3-10: hwb(295 4% 56%);
+            --c-point: rgb(247, 49, 108);
+            --f-family-1: "Righteous", "Noto Sans TC", sans-serif;
+        }
+
+        html {
+            font-size: 22px;
+        }
+
+        body {
+            background-color: rgba(255, 209, 100);
+            font-family: var(--f-family-1);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.1); /* 調整邊框粗細 */
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        /* 按鈕樣式 */
+        .btn-custom {
+            background-color: rgba(245, 160, 168, 0.822);
+            color: black;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #ffffff;
+            color: black;
+            border: 2px solid rgba(245, 160, 168, 0.822);
+        }
+
+        .btn-custom:focus {
+            background-color: rgba(245, 160, 168, 0.822);
+            color: black;
+            border: 2px solid rgba(245, 160, 168, 0.822);
+            outline: none;
+            box-shadow: none;
+            font-weight: bold; /* 調整字體加粗 */
+        }
+
+        .btn-secondary-custom {
+            background-color: rgb(154, 148, 144);
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+
+        .btn-secondary-custom:hover {
+            background-color: #ffffff;
+            color: black;
+            border: 2px solid rgb(154, 148, 144);
+        }
+
+        .btn-secondary-custom:focus {
+            background-color: rgb(154, 148, 144);
+            color: black;
+            border: 2px solid rgb(154, 148, 144);
+            outline: none;
+            box-shadow: none;
+            font-weight: bold; /* 調整字體加粗 */
+        }
+
+        .btn-custom-sm-edit {
+            background-color: rgba(177, 95, 202);
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 0.875rem;
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+
+        .btn-custom-sm-edit:hover {
+            background-color: #ffffff;
+            color: black;
+            border: 2px solid rgba(177, 95, 202);
+        }
+
+        .btn-custom-sm-edit:focus {
+            background-color: rgba(177, 95, 202);
+            color: black;
+            border: 2px solid rgba(177, 95, 202);
+            outline: none;
+            box-shadow: none;
+            font-weight: bold; /* 調整字體加粗 */
+        }
+
+        .btn-custom-sm-delete {
+            background-color: rgb(247, 49, 108);
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 0.875rem;
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+
+        .btn-custom-sm-delete:hover {
+            background-color: #ffffff;
+            color: black;
+            border: 2px solid rgb(247, 49, 108);
+        }
+
+        .btn-custom-sm-delete:focus {
+            background-color: rgb(247, 49, 108);
+            color: white;
+            border: 2px solid rgb(247, 49, 108);
+            outline: none;
+            box-shadow: none;
+            font-weight: bold; /* 調整字體加粗 */
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(177, 95, 202, 0.05);
+        }
+
+        .form-control, .form-select {
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: rgba(245, 160, 168, 0.822);
+            box-shadow: 0 0 5px rgba(245, 160, 168, 0.822);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">編輯商品</h1>
+        <!-- 表單開始 -->
+        <form th:action="@{/products/edit/{id}(id=${productDtoId})}" method="post" enctype="multipart/form-data" th:object="${productDto}" onsubmit="handleSubmit(event)">
+            <!-- 順序顯示框 -->
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">順序</label>
+                <div class="col-sm-8">
+                    <input readonly class="form-control-plaintext" th:value="${productDtoId}">
+                </div>
+            </div>
+
+            <!-- 商品名稱輸入框 -->
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">商品名稱</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" th:field="*{name}" />
+                    <p th:if="${#fields.hasErrors('name')}" th:errorclass="text-danger" th:errors="*{name}"></p>
+                </div>
+            </div>
+
+            <!-- 商品類別選擇框 -->
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">商品類別</label>
+                <div class="col-sm-8">
+                    <select class="form-select" th:field="*{category}">
+                        <option value="Choose">請選擇</option>
+                        <option value="Pudding">布丁</option>
+                        <option value="Cake">蛋糕</option>
+                        <option value="Shake">奶昔</option>
+                        <option value="Coffee">咖啡</option>
+                        <option value="Cookie">軟餅乾</option>
+                        <option value="Tea">花果茶</option>
+                        <option value="Ice">冰淇淋聖代</option>
+                    </select>
+                    <p th:if="${#fields.hasErrors('category')}" th:errorclass="text-danger" th:errors="*{category}"></p>
+                </div>
+            </div>
+
+            <!-- 商品價格輸入框 -->
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">商品價格</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="number" step="1" min="0" th:field="*{price}">
+                    <p th:if="${#fields.hasErrors('price')}" th:errorclass="text-danger" th:errors="*{price}"></p>
+                </div>
+            </div>
+
+            <!-- 商品圖片顯示框 -->
+            <div class="row mb-3">
+                <div class="offset-sm-4 col-sm-8">
+                    <img th:src="'data:image/png;base64,' + ${product.base64Image}" width="100px" alt="Product Image" class="product-image" />
+                </div>
+            </div>
+
+            <!-- 商品圖片上傳框 -->
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">商品圖片</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="file" th:field="*{imageFile}">
+                    <p th:if="${#fields.hasErrors('imageFile')}" th:errorclass="text-danger" th:errors="*{imageFile}"></p>
+                </div>
+            </div>
+
+            <!-- 創建時間顯示框 -->
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">創建時間</label>
+                <div class="col-sm-8">
+                    <input readonly class="form-control-plaintext" th:value="${#temporals.format(productDto.createdAt, 'yyyy-MM-dd HH:mm')}">
+                </div>
+            </div>
+
+            <!-- 表單提交和取消按鈕 -->
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-custom">更新</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-secondary-custom" href="/products" role="button">取消</a>
+                </div>
+            </div>
+        </form>
+        <!-- 表單結束 -->
+    </div>
+    <!-- 引入 Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // 阻止表單的默認提交行為
+
+            const form = event.target;
+
+            // 使用 Fetch API 提交表單數據
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text(); // 如果響應是 OK，則解析為文字
+                }
+                throw new Error('Network response was not ok');
+            })
+            .then(data => {
+                // 顯示 SweetAlert 提示框
+                Swal.fire({
+                    icon: 'success',
+                    title: '更新完成',
+                    text: '商品已成功更新',
+                    confirmButtonText: '完成'
+                }).then(() => {
+                    // 提示框關閉後跳轉到商品管理頁面
+                    window.location.href = '/products';
+                });
+            })
+            .catch(error => {
+                console.error('錯誤:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: '更新失敗',
+                    text: '更新商品時發生錯誤，請稍後再試。',
+                });
+            });
+        }
+    </script>
+</body>
+</html>

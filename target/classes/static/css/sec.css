@@ -1,0 +1,547 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Righteous&display=swap');
+
+/* 根變數設置，用於定義全局顏色和字體 */
+:root {
+    --c-nav-10: rgb(104, 26, 126, 1.0); /* 導航欄主色 */
+    --c-nav-05: rgba(208, 55, 250, 0.5); /* 導航欄輔助色 */
+    --c-nav-00: rgba(208, 55, 250, 0.2); /* 導航欄背景色 */
+
+    --c-assist1-10: rgb(129, 16, 160); /* 輔助顏色1 */
+    --c-assist1-05: rgba(129, 16, 160, 0.5); /* 輔助顏色1 半透明 */
+
+    --c-assist2-10: rgba(173, 99, 196, 0.8); /* 輔助顏色2 */
+    --c-assist2-03: rgba(147, 99, 161, 0.5); /* 輔助顏色2 半透明 */
+    --c-assist2-01: rgba(206, 124, 231, 0.1); /* 輔助顏色2 淡色 */
+    --c-assist2-00: rgba(177, 95, 202, 0.05); /* 輔助顏色2 更淡色 */
+
+    --c-assist3-10: hwb(295 4% 56%); /* 輔助顏色3 */
+
+    --c-point: rgb(247, 49, 108); /* 強調顏色 */
+    --f-family-1: "Righteous", "Noto Sans TC", sans-serif; /* 字體家族 */
+}
+
+/* 全局字體大小 */
+html {
+    font-size: 22px;
+}
+
+/* 全局樣式設置 */
+body {
+    background-color: rgba(245, 160, 168, 0.822); /* 背景顏色 */
+    font-family: var(--f-family-1); /* 字體家族 */
+    margin: 0; /* 取消默認外邊距 */
+    padding: 0; /* 取消默認內邊距 */
+    color: #000000; /* 文字顏色 */
+}
+
+/* 使用者名稱樣式 */
+.username {
+    margin-top: -20px; /* 與登出按鈕之間的間距 */
+    font-size: 23px; /* 字體大小 */
+    color: white; /* 字體顏色 */
+}
+
+/* 登出按鈕樣式 */
+.navbar-nav .logout-form .btn-primary {
+    background-color: white; /* 按鈕背景色 */
+    border-color: rgba(150, 90, 56); /* 按鈕邊框色 */
+    padding: 10px 22px; /* 按鈕內邊距 */
+    font-size: 18px; /* 按鈕字體大小 */
+    color: rgba(150, 90, 56); /* 按鈕文字顏色 */
+    display: inline-block; /* 使按鈕與其他元素保持在同一行 */
+    vertical-align: middle; /* 垂直對齊 */
+}
+
+.navbar-nav .logout-form .btn-primary:hover {
+    background-color: white; /* 滑鼠懸停時的背景色 */
+    border-color: rgba(150, 90, 56); /* 滑鼠懸停時的邊框色 */
+}
+
+/* 導航欄樣式 */
+.navbar {
+    background-color: rgb(150, 90, 56); /* 背景色 */
+    border-bottom: 1px solid var(--c-nav-05); /* 底部邊框 */
+    width: 80%; /* 寬度為80% */
+    padding: 5px 0; /* 內邊距 */
+    margin: 0 auto; /* 水平置中 */
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+}
+
+/* 導航欄容器樣式 */
+.navbar .container {
+    display: flex; /* 使用 Flexbox 佈局 */
+    justify-content: space-between; /* 元素間距離拉開 */
+    align-items: center; /* 垂直居中 */
+    max-width: 1200px; /* 最大寬度 */
+    margin: 0 auto; /* 水平居中 */
+    padding: 0 20px; /* 內邊距 */
+}
+
+/* 導航欄品牌區域樣式 */
+.navbar-brand h1 {
+    font-size: 1em; /* 字體大小 */
+    margin: 0; /* 取消外邊距 */
+}
+
+/*=======================以上是導覽列的固定數據=======================================*/
+
+#sec1 {
+    width: 80%; /* 設定與導航列相同的寬度 */
+    margin: 0 auto; /* 水平居中 */
+    padding: 20px 0; /* 內邊距 */
+    background-color: #f9f9f9; /* 背景色 */
+}
+
+/* 登出按鈕箭頭指到背景變化 */
+.reminder-content {
+    margin-top: 10px;
+    padding: 10px;
+    border: 20px solid #ddd;
+    border-radius: 90px;
+    background-color: #f9f9f9;
+}
+
+.shopcar-icon {
+    width: 30px; /* 圖片寬度 */
+    height: 30px; /* 圖片高度 */
+    margin-right: 10px; /* 與登出按鈕之間的間距 */
+    vertical-align: middle; /* 垂直對齊 */
+}
+
+/* 圖片樣式---大圖片 */
+#sec1 img {
+    width: 100%; /* 圖片寬度設為100% */
+    height: 800px; /* 高度自適應 */
+    display: block; /* 將圖片設置為塊級元素 */
+    margin: 0 auto 50px auto; /* 水平居中，底部邊距50px */
+    transform: translateY(-20px); /* 向上移動20px */
+}
+
+/* 文字區域樣式 */
+#sec1 .text-area {
+    text-align: center; /* 文字居中 */
+}
+
+/* 大圖片下面 CL Coffee 字樣的區域 */
+#sec1 .text-area h2 {
+    margin-top: 10px; /* 底部邊距 */
+    text-align: left;
+    margin-left: 50px;
+}
+
+#sec1 .text-area p {
+    font-size: 1em; /* 字體大小 */
+    color: #666; /* 字體顏色 */
+}
+
+/* 資訊圖是懸浮字樣區域 */
+#sec1 .text-area .info-text {
+    display: none; /* 初始狀態隱藏 */
+    position: absolute; /* 絕對定位 */
+    bottom: 300%; /* 位於圖標上方 */
+    left: 50%; /* 左邊對齊 */
+    transform: translateX(-50%); /* 水平居中 */
+    padding: 20px 10px; /* 內邊距 */
+    border-radius: 5px; /* 邊框圓角 */
+    font-size: 0.8em; /* 字體大小 */
+    white-space: nowrap; /* 防止換行 */
+}
+
+/* 資訊圖是懸浮字樣(顯示)區域 */
+#sec1 .text-area .info-link:hover .info-text {
+    display: block; /* 懸停時顯示 */
+}
+
+/* 下拉式選單位置 */
+.reminder-details {
+    margin-top: 20px;
+}
+
+/* 提醒事項字樣區域 */
+.reminder-details summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 50px;
+}
+
+/* 提醒事項、箭頭分隔距離 */
+.reminder-details summary .summary-text {
+    order: 1;
+}
+
+/* 箭頭轉向速度 */
+.reminder-details summary .summary-arrow {
+    order: 2;
+    transition: transform 0.3s ease;
+    margin-right: 50px; /* 微調箭頭與文本之間的距離 */
+}
+
+/* 箭頭轉向角度 */
+.reminder-details[open] .summary-arrow {
+    transform: rotate(90deg);
+}
+
+/*=======================以上是#sec1區域 大圖 + CL Coffee標題 + 提醒事項標題 + 下拉選單箭頭 的固定數據=======================================*/
+
+/* 調整標題元素樣式 */
+.reminder-content h5 {
+    font-size: 1.2em; /* 設置字體大小 */
+    text-align: left;
+    margin-top: 30px; /* 設置頂部間距 */
+    margin-bottom: 5px; /* 設置底部間距 */
+    color: #333; /* 設置字體顏色 */
+    margin-left: 30px;
+}
+
+/* 調整內文元素樣式 */
+.reminder-content p {
+    margin: 5px 0; /* 設置上下間距 */
+    text-align: left;
+    margin-left: 130px;
+    color: #666; /* 設置字體顏色 */
+    line-height: 1.5; /* 設置行高 */
+}
+
+/* 調整表格標題元素樣式 */
+.reminder-content .service-list {
+    padding-left: 20px; /* 設置左邊填充 */
+    list-style-type: disc; /* 設置列表樣式 */
+}
+
+/* 調整表格內容元素樣式 */
+.reminder-content .service-list li {
+    margin-bottom: 5px; /* 設置底部間距 */
+    color: #666; /* 設置字體顏色 */
+    text-align: left;
+    margin-left: 150px;
+}
+/*=======================以上是提醒事項區域下拉選單內文的固定數據=======================================*/
+
+/* sec2 區域樣式 */
+#sec2 {
+    width: 80%; /* 寬度設為80% */
+    margin: 0 auto; /* 水平置中 */
+    padding: 20px 0; /* 內邊距 */
+    background-color: rgba(150, 90, 56); /* 背景顏色 */
+}
+
+/* 標題樣式 */
+#sec2 .title {
+    text-align: center; /* 置中對齊 */
+    color: #ffffff; /* 字體顏色 */
+    font-size: 2.5rem; /* 字體大小 */
+    font-weight: bold; /* 字體粗細 */
+    margin-top: 5px; /* 上邊距 */
+}
+
+/* 導覽列樣式 */
+#sec2 .custom-nav-tabs {
+    background-color: #ffffff; /* 背景顏色 */
+    padding: 25px; /* 內邊距 */
+    border-radius: 50px; /* 圓角邊框 */
+}
+
+/* 導覽列文字樣式 */
+#sec2 .nav-tabs .nav-link {
+    border: none; /* 取消原有的邊框 */
+    border-bottom: 2px solid #ffffff; /* 底部邊框 */
+    padding-bottom: 5px; /* 添加下方內邊距 */
+    font-size: 1.1rem; /* 字體大小 */
+    padding-top: 5px; /* 上方內邊距 */
+}
+
+/* 導覽列選中狀態 */
+#sec2 .custom-nav-tabs .nav-link.active {
+    background-color: rgba(150, 90, 56); /* 選中狀態背景顏色 */
+    color: white; /* 字體顏色 */
+}
+
+/* 導覽列懸停狀態 */
+#sec2 .custom-nav-tabs .nav-link:hover {
+    background-color: rgba(150, 90, 56); /* 懸停狀態背景顏色 */
+    color: white; /* 字體顏色 */
+}
+
+/* 導覽列文字顏色 */
+#sec2 .nav-tabs .nav-link {
+    color: #000000; /* 未激活狀態文字顏色 */
+    font-weight: bold; /* 字體粗細 */
+}
+
+/* 控制數量調整區域的樣式 */
+.quantity-controls {
+    display: flex; /* 使用 flex 佈局 */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    margin-bottom: 10px; /* 底部外邊距 */
+}
+
+/* 控制數量輸入框的樣式 */
+.quantity-input {
+    width: 80px; /* 寬度 */
+    text-align: center; /* 文字置中 */
+    margin: 0 5px; /* 左右外邊距 */
+    border: 1px solid #ccc; /* 邊框顏色 */
+    border-radius: 5px; /* 邊框圓角 */
+    height: 35px; /* 高度 */
+    font-size: 35px; /* 字體大小 */
+}
+
+/* 控制減少數量按鈕的樣式 */
+.quantity-minus {
+    background-color: rgba(150, 90, 56); /* 設置背景顏色 */
+    color: #fff; /* 設置文字顏色 */
+    border: none; /* 移除邊框 */
+    padding: 10px; /* 設置內邊距 */
+    border-radius: 5px; /* 設置圓角 */
+    cursor: pointer; /* 設置滑鼠樣式為指針 */
+    font-size: 20px; /* 字體大小 */
+    width: 40px; /* 設置按鈕寬度 */
+    height: 40px; /* 設置按鈕高度 */
+}
+
+/* 控制滑鼠懸停在減少數量按鈕上的效果 */
+.quantity-minus:hover {
+    background-color: rgba(150, 90, 56); /* 懸停時的背景顏色 */
+}
+
+/* 控制增加數量按鈕的樣式 */
+.quantity-plus {
+    background-color: rgba(150, 90, 56); /* 設置背景顏色 */
+    color: #fff; /* 設置文字顏色 */
+    border: none; /* 移除邊框 */
+    padding: 10px; /* 設置內邊距 */
+    border-radius: 5px; /* 設置圓角 */
+    cursor: pointer; /* 設置滑鼠樣式為指針 */
+    font-size: 20px; /* 字體大小 */
+    width: 40px; /* 設置按鈕寬度 */
+    height: 40px; /* 設置按鈕高度 */
+}
+
+/* 控制滑鼠懸停在增加數量按鈕上的效果 */
+.quantity-plus:hover {
+    background-color: rgba(150, 90, 56); /* 懸停時的背景顏色 */
+}
+
+/* 控制加入購物車按鈕的樣式 */
+.add-to-cart-btn {
+    position: relative; /* 相對定位，用於懸浮效果 */
+    border: none; /* 移除邊框 */
+    padding: 0; /* 設置內邊距為0 */
+    cursor: pointer; /* 設置滑鼠樣式為指針 */
+}
+
+/* 控制購物車圖示的樣式 */
+.shopcart-icon {
+    width: 30px; /* 圖示寬度 */
+    height: 30px; /* 圖示高度 */
+    transition: transform 0.2s; /* 平滑過渡效果 */
+}
+
+/* 控制滑鼠懸停在加入購物車按鈕上的購物車圖示放大效果 */
+.add-to-cart-btn:hover .shopcart-icon {
+    transform: scale(1.1); /* 放大圖示 */
+}
+
+/* 控制滑鼠懸停在加入購物車按鈕上時顯示提示文字的效果 */
+.add-to-cart-btn:hover::after {
+    content: "加入購物車"; /* 提示文字 */
+    position: absolute; /* 絕對定位 */
+    bottom: 63px; /* 底部位置 */
+    left: 30%; /* 左側位置 */
+    transform: translateX(-50%); /* 水平置中 */
+    background-color: rgba(0, 0, 0, 0.75); /* 提示文字背景顏色 */
+    color: #fff; /* 文字顏色 */
+    padding: 5px 10px; /* 內邊距 */
+    border-radius: 5px; /* 邊框圓角 */
+    font-size: 12px; /* 字體大小 */
+    white-space: nowrap; /* 防止換行 */
+}
+
+/*==============================以上為商品類別控制區===============================================*/
+
+/* 圖片展示區域樣式 */
+#sec3 {
+    width: 80%; /* 設定與導航列相同的寬度 */
+    margin: 0 auto; /* 水平居中 */
+    padding: 20px 30px; /* 內邊距 */
+    background-color: rgba(150, 90, 56); /* 背景色 */
+}
+
+/* 卡片區域樣式 */
+.product-item .card {
+    margin-bottom: 20px; /* 卡片之間的距離 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+}
+
+/* 卡片圖片樣式 */
+.product-item .card-img-top {
+    width: 100%; /* 圖片寬度設為100% */
+    height: auto; /* 高度自適應 */
+}
+
+/* 卡片標題樣式 */
+.product-item .card-title {
+    font-size: 1.2rem; /* 字體大小 */
+    color: #333; /* 字體顏色 */
+    margin-bottom: 10px; /* 底部間距 */
+}
+
+/* 卡片文字樣式 */
+.product-item .card-text {
+    color: #666; /* 字體顏色 */
+    font-size: 1rem; /* 字體大小 */
+    margin-bottom: 0; /* 底部間距 */
+}
+
+/*==============================以上是菜單區域==================================*/
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end; /* 將按鈕容器設置為右對齊 */
+    align-items: center;
+    margin-top: -50px; /* 調整整體容器的位置 */
+    margin-right: 30px; /* 調整容器右邊距 */
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px; /* 調整按鈕之間的間距 */
+    margin-bottom:30px;
+    background-color: white; /* 背景顏色設為白色 */
+    color: rgba(150, 90, 56); /* 字體顏色設為指定的顏色 */
+    border: none; /* 移除邊框 */
+    font-weight: bold; /* 字體粗細 */
+    padding: 10px 20px; /* 設置內邊距 */
+    border-radius: 5px; /* 設置圓角 */
+    font-size: 22px; /* 設置字體大小 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 添加黑色陰影 */
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* 添加過渡效果 */
+}
+
+.btn:hover {
+    background-color: rgba(243, 229, 188); /* 懸停時背景顏色 */
+    color: black; /* 懸停時字體顏色 */
+    font-weight: bold; /* 字體粗細 */
+    box-shadow: 0 12px 12px rgba(0, 0, 0, 0.5); /* 懸停時陰影效果為黑色 */
+}
+
+
+
+
+
+/*================================================================================*/
+
+/* footer 區域 */
+footer {
+    background-color: rgb(255, 255, 255); /* 背景顏色 */
+    color: rgba(150, 90, 56); /* 文字顏色 */
+    text-align: center; /* 文字居中 */
+    font-size: 14px; /* 字體大小 */
+    padding: 1rem; /* 內邊距 */
+    width: 80%; /* 導航欄寬度 */
+    margin: 0 auto; /* 導航欄水平居中 */
+}
+
+/*===================================以上為footer區域==============================*/
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    /* 根據需要調整響應式佈局和樣式 */
+
+    /* 導覽列樣式 */
+    .navbar {
+        width: 100%; /* 寬度設為100% */
+        padding: 10px; /* 調整內邊距 */
+    }
+
+    .navbar .container {
+        flex-direction: column; /* 垂直排列 */
+    }
+
+    .navbar-login .btn {
+        margin-top: 10px; /* 添加頂部邊距 */
+    }
+
+    /* 主內容區域 */
+    #sec1, #sec2 {
+        width: 100%; /* 寬度設為100% */
+        padding: 10px; /* 調整內邊距 */
+    }
+
+    /* 調整圖片的大小 */
+    #sec1 img {
+        height: auto; /* 自動調整高度 */
+        width: 100%;
+    }
+
+    /* 文字區域樣式 */
+    #sec1 .text-area h2 {
+        text-align: center; /* 置中對齊 */
+        margin-left: 0; /* 取消左邊距 */
+    }
+
+    .reminder-details summary {
+        margin-left: 0; /* 取消左邊距 */
+    }
+
+    .reminder-content p, .reminder-content .service-list li {
+        margin-left: 0; /* 取消左邊距 */
+    }
+
+    /* 調整sec2區域樣式 */
+    #sec2 {
+        padding-top: 20px; /* 減少上邊距 */
+        padding-bottom: 20px; /* 減少下邊距 */
+    }
+
+    /* 調整標題的樣式和位置 */
+    .title {
+        font-size: 2rem; /* 減少字體大小 */
+    }
+
+    .menu-nav ul {
+        flex-direction: column; /* 垂直排列 */
+    }
+
+    .menu-nav ul li {
+        margin: 10px 0; /* 調整項目間距 */
+    }
+
+    /* 調整圖片展示區域的樣式 */
+    .tab-content {
+        margin-top: 10px; /* 減少上邊距 */
+    }
+
+    /* 調整圖片展示區域中的每個列的樣式 */
+    .row .col-12 {
+        margin-bottom: 15px; /* 增加下邊距 */
+    }
+
+    /* 調整數量控制按鈕樣式 */
+    .quantity-controls {
+        flex-direction: column; /* 垂直排列 */
+        align-items: flex-start; /* 左對齊 */
+    }
+
+    .quantity-controls input {
+        margin: 5px 0; /* 調整內邊距 */
+    }
+
+    .add-to-cart-btn {
+        width: 100%; /* 寬度設為100% */
+    }
+
+    /* 調整 footer 區域 */
+    footer {
+        font-size: 0.8em; /* 調整字體大小 */
+        margin-top: 50px; /* 調整頂部間距 */
+    }
+}

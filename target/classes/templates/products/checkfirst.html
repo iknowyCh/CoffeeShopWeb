@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>訂單明細</title>
+</head>
+<body>
+<div th:fragment="orderDetailsFragment">
+    <p>訂單編號: <span th:text="${sale.id}"></span></p>
+    <p>總價: <span th:text="${sale.totalAmount}"></span></p>
+    <p>商品明細: <span th:text="${sale.name}"></span></p>
+    <p>狀態: <span th:text="${sale.status}"></span></p>
+    <p>建立時間: <span th:text="${formattedOrderTime}"></span></p>
+</div>
+</body>
+</html>

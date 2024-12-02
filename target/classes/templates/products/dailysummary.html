@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>每日銷售報告</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --c-nav-10: rgb(104, 26, 126, 1.0);
+            --c-nav-05: rgba(208, 55, 250, 0.5);
+            --c-nav-00: rgba(208, 55, 250, 0.2);
+            --c-assist1-10: rgb(129, 16, 160);
+            --c-assist1-10: rgba(129, 16, 160, 0.5);
+            --c-assist2-10: rgb(173, 99, 196, 0.8);
+            --c-assist2-03: rgb(147, 99, 161, 0.5);
+            --c-assist2-01: rgba(206, 124, 231, 0.1);
+            --c-assist2-00: rgba(177, 95, 202, 0.05);
+            --c-assist3-10: hwb(295 4% 56%);
+            --c-point: rgb(247, 49, 108);
+            --f-family-1: "Righteous", "Noto Sans TC", sans-serif;
+        }
+
+        html {
+            font-size: 22px;
+        }
+
+        body {
+            background-color: rgba(255, 209, 100);
+            font-family: var(--f-family-1);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1500px;
+            text-align: center;
+        }
+
+        .btn-custom {
+            background-color: rgba(245, 160, 168, 0.822);
+            color: black;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #ffffff;
+            color: black;
+            border: 2px solid rgba(245, 160, 168, 0.822);
+        }
+
+        .btn-custom:focus {
+            background-color: rgba(245, 160, 168, 0.822);
+            color: black;
+            border: 2px solid rgba(245, 160, 168, 0.822);
+            outline: none;
+            box-shadow: none;
+            font-weight: bold;
+        }
+
+        .btn-secondary-custom {
+            background-color: rgb(154, 148, 144);
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+
+        .btn-secondary-custom:hover {
+            background-color: #ffffff;
+            color: black;
+            border: 2px solid rgb(154, 148, 144);
+        }
+
+        .btn-secondary-custom:focus {
+            background-color: rgb(154, 148, 144);
+            color: black;
+            border: 2px solid rgb(154, 148, 144);
+            outline: none;
+            box-shadow: none;
+            font-weight: bold;
+        }
+
+        .table {
+            margin-top: 20px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: rgba(208, 55, 250, 0.2);
+        }
+
+        td {
+            background-color: rgba(206, 124, 231, 0.1);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(177, 95, 202, 0.05);
+        }
+
+       .form-group {
+	    margin-bottom: 20px;
+	    display: flex;
+	    justify-content: flex-end; /* 調整到右邊 */
+	    align-items: center;
+	}
+
+
+        .form-group label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 200px;
+            padding: 5px;
+            border: 2px solid var(--c-nav-10);
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group button {
+            margin-left: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: -50px;
+        }
+        
+        .custom-modal-dialog {
+		    max-width: 1000px; /* 調整模態框的最大寬度 */
+		}
+		
+		.modal-body {
+		    display: flex;
+		    justify-content: center;
+		}
+		
+		#top5Chart {
+		    max-width: 900px; /* 調整圖表的最大寬度 */
+		    max-height: 600px; /* 調整圖表的最大高度*/
+		}
+		
+		.btn-top5-custom {
+    /* 自定義銷售前五圖表按鈕樣式 */
+	    background-color: rgba(245, 160, 168, 0.822); /* 調整背景顏色 */
+	    color: black;
+	    border: none;
+	    padding: 8px 12px;
+	    border-radius: 5px;
+	    font-size: 1.2em;
+	    transition: background-color 0.3s, transform 0.3s ease;
+	}
+	
+	.btn-top5-custom:hover {
+	    /* 自定義銷售前五圖表按鈕懸停樣式 */
+	    background-color: white; /* 調整懸停背景顏色 */
+	    color: black;
+	    border: 2px solid rgba(245, 160, 168, 0.822);
+	}
+	
+	.btn-top5-custom:focus {
+	    /* 自定義銷售前五圖表按鈕焦點樣式 */
+	    background-color: white;
+	    color: black;
+	    border: 2px solid rgba(245, 160, 168, 0.822);
+	    outline: none;
+	    box-shadow: none;
+	    font-weight: bold;
+	}
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>每日銷售報告</h1>
+        <form method="get" action="/products/dailySummary">
+        <div class="button-group">
+                  	<a th:href="@{/products/secindex}" class="btn btn-secondary-custom">上一頁</a>
+					<a id="exportReportBtn" th:href="@{/products/exportDailySummary}" class="btn btn-custom">匯出報表</a>
+					<button id="showTop5Chart" type="button" class="btn btn-secondary-custom btn-top5-custom">銷售前五圖表</button>
+					</div>
+            <div class="form-group">
+                
+                <input type="date" id="date" name="date" class="form-control" th:value="${selectedDate}" required>
+                <button type="submit" class="btn btn-custom">查詢</button>
+            </div>
+        </form>
+        <table class="table table-hover" id="dailySummary">
+            <thead>
+                <tr>
+                    <th>產品名稱</th>
+                    <th>數量</th>
+                    <th>金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${noDataMessage}">
+                    <td colspan="3" th:text="${noDataMessage}" class="text-center">查無銷售報告</td>
+                </tr>
+                <tr th:each="summary : ${dailySummary}">
+                    <td th:text="${summary[0]}">產品名稱</td>
+                    <td th:text="${summary[1]}">數量</td>
+                    <td th:text="${summary[2]}">金額</td>
+                </tr>
+                <tr th:unless="${noDataMessage}">
+                    <td><strong>總計</strong></td>
+                    <td th:text="${totalQuantity}">0</td>
+                    <td th:text="${totalAmount}">0 元</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="chartModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chartModalLabel">銷售前五圖表</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="top5Chart"></canvas>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary-custom" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var chart;
+        
+        $('#showTop5Chart').click(function() {
+            var selectedDate = $('#date').val();
+            if ($('#dailySummary').find('tr').length <= 2) {
+                Swal.fire({
+                    title: '查無銷售報告',
+                    text: '無法顯示圖表',
+                    icon: 'warning',
+                    confirmButtonText: '確定'
+                });
+                return;
+            }
+
+            $.ajax({
+                url: '/products/top5Products',
+                method: 'GET',
+                data: { date: selectedDate },
+                success: function(data) {
+                    if (chart) {
+                        chart.destroy();
+                    }
+                    var ctx = document.getElementById('top5Chart').getContext('2d');
+                    chart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: '數量',
+                                data: data.quantities,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        font: {
+                                            size: 18 // 調整Y軸文字大小
+                                        }
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        font: {
+                                            size: 18 // 調整X軸文字大小
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        font: {
+                                            size: 18 // 調整圖例文字大小
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                    $('#chartModal').modal('show');
+                }
+            });
+        });
+
+        $('#chartModal').on('hidden.bs.modal', function () {
+            if (chart) {
+                chart.destroy();
+            }
+        });
+
+        $('#exportReportBtn').click(function(e) {
+            e.preventDefault();
+            var selectedDate = $('#date').val();
+            if ($('#dailySummary').find('tr').length <= 2) {
+                Swal.fire({
+                    title: '查無銷售報告',
+                    text: '無法匯出報表',
+                    icon: 'warning',
+                    confirmButtonText: '確定'
+                });
+                return;
+            }
+            window.location.href = '/products/exportDailySummary?date=' + selectedDate;
+        });
+
+    </script>
+
+</body>
+</html>

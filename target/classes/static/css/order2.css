@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Righteous&display=swap');
+
+/* 根變數設置，用於定義全局顏色和字體 */
+:root {
+    --c-nav-10: rgb(104, 26, 126, 1.0); /* 導航欄主色 */
+    --c-nav-05: rgba(208, 55, 250, 0.5); /* 導航欄輔助色 */
+    --c-nav-00: rgba(208, 55, 250, 0.2); /* 導航欄背景色 */
+
+    --c-assist1-10: rgb(129, 16, 160); /* 輔助顏色1 */
+    --c-assist1-05: rgba(129, 16, 160, 0.5); /* 輔助顏色1 半透明 */
+
+    --c-assist2-10: rgba(173, 99, 196, 0.8); /* 輔助顏色2 */
+    --c-assist2-03: rgba(147, 99, 161, 0.5); /* 輔助顏色2 半透明 */
+    --c-assist2-01: rgba(206, 124, 231, 0.1); /* 輔助顏色2 淡色 */
+    --c-assist2-00: rgba(177, 95, 202, 0.05); /* 輔助顏色2 更淡色 */
+
+    --c-assist3-10: hwb(295 4% 56%); /* 輔助顏色3 */
+
+    --c-point: rgb(247, 49, 108); /* 強調顏色 */
+    --f-family-1: "Righteous", "Noto Sans TC", sans-serif; /* 字體家族 */
+}
+
+/* 全局字體大小 */
+html {
+    font-size: 22px;
+}
+
+/* 全局樣式設置 */
+body {
+    background-color: rgba(245, 160, 168, 0.822); /* 背景顏色 */
+    font-family: var(--f-family-1); /* 字體家族 */
+    margin: 0; /* 取消默認外邊距 */
+    padding: 0; /* 取消默認內邊距 */
+    color: #000000; /* 文字顏色 */
+}
+
+/* 訂單標題樣式 */
+h1 {
+    color: rgb(150, 90, 56); /* 標題顏色 */
+    text-align: center; /* 標題居中 */
+    margin: 20px 0 20px 0; /* 上下邊距和底部外邊距 */
+}
+
+/* 表格樣式 */
+.table {
+    margin: 20px auto; /* 上下外邊距和居中 */
+    width: 80%; /* 表格寬度 */
+    border-collapse: collapse; /* 合併邊框 */
+    background-color: #fff; /* 背景顏色 */
+    border-radius: 5px; /* 圓角 */
+    overflow: hidden; /* 隱藏溢出內容 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    font-family: var(--f-family-1); /* 表格字體 */
+}
+
+/* 表格標題樣式 */
+.table th {
+    background-color: rgb(150, 90, 56); /* 標題背景色 */
+    color: #fff; /* 文字顏色 */
+    text-align: center; /* 文字居中 */
+    padding: 10px; /* 內邊距 */
+}
+
+/* 表格內容樣式 */
+.table td {
+    text-align: center; /* 文字居中 */
+    padding: 10px; /* 內邊距 */
+    border: 1px solid #ddd; /* 邊框 */
+}
+
+/* 按鈕樣式 */
+a.btn-primary, a.btn-secondary, button[type="submit"] {
+    background-color: rgb(150, 90, 56); /* 按鈕背景色 */
+    border: none; /* 無邊框 */
+    border-radius: 5px; /* 圓角 */
+    padding: 10px 20px; /* 內邊距 */
+    font-size: 1rem; /* 字體大小 */
+    color: #fff; /* 文字顏色 */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* 過渡效果 */
+    outline: none; /* 移除按鈕的外邊框 */
+    font-family: var(--f-family-1); /* 按鈕字體 */
+}
+
+/* 查看訂單按鈕樣式 */
+a.btn-primary {
+    background-color: rgba(150, 90, 56); /* 按鈕背景色 */
+    color: #fff; /* 文字顏色 */
+    border-color: rgba(150, 90, 56, 0.8);
+}
+
+/* 查看訂單按鈕懸停效果 */
+a.btn-primary:hover, a.btn-secondary:hover {
+    background-color: white; /* 懸停時背景色 */
+    color: rgba(150, 90, 56); /* 懸停時文字顏色 */
+    border-color: rgba(150, 90, 56, 0.8);
+}
+
+/* 查看訂單按鈕焦點效果 */
+a.btn-primary:focus, a.btn-secondary:focus {
+    outline: none; /* 移除按鈕焦點時的外邊框 */
+}
+
+/* 回到菜單按鈕樣式 */
+a.btn-secondary {
+    background-color: rgba(150, 90, 56);
+    color: #fff;
+    border-color: rgba(150, 90, 56, 0.8);
+    margin-left: 1500px; /* 向右移動按鈕 */
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    /* 調整表格寬度 */
+    .table {
+        width: 100%; /* 100%寬度 */
+    }
+
+    /* 調整按鈕寬度 */
+    a, button[type="submit"] {
+        width: 100%; /* 100%寬度 */
+        margin: 10px 0; /* 上下邊距 */
+    }
+}
